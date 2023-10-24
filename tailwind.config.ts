@@ -8,13 +8,30 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      backgroundColor: {
+        'primary':"#131212"
       },
+      colors: {
+        'primary':"#FFFFFF",
+        'secondary':"#131212",
+      },
+      fontSize: {
+        '11xl': '10rem'
+      },
+      fontFamily: {
+        'montserrat': ['Montserrat'],
+        'monument': ['MonumentExtended'],
+      },
+      maxWidth: {
+        '9xl':'100rem'
+      },
+      backgroundImage: {
+        'white-black': 'linear-gradient(90deg, #E6E6E6 0%, #131212 100%)',
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    
+  ],
 }
 export default config
