@@ -1,7 +1,7 @@
 "use server";
 import { FiltersHome } from "../map/FiltersHome";
 import { MapHome } from "../map/MapHome";
-import dynamic from "next/dynamic";
+import { BalisesTab } from "./BalisesTab";
 
 export const BalisesSection = () => {
   return (
@@ -15,8 +15,7 @@ export const BalisesSection = () => {
           <FiltersHome />
           {/* @ts-expect-error Server Component */}
           <MapHome />
-
-          <div className="h-1/2-screen w-[25%] bg-gray-300 shadow-2xl rounded-3xl"></div>
+          <BalisesTab />
         </div>
       </div>
     </div>
