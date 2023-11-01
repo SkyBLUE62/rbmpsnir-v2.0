@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/features/layout/Header";
-
+import { Footer } from "@/components/features/layout/Footer";
 export const metadata: Metadata = {
   title: "rbmp-snir v2.0 | Home",
   description: "Home page of rbmp-snir v2.0",
@@ -19,6 +19,7 @@ export default function RootLayout({
           {/* @ts-expect-error Server Component */}
           <Header />
           {children}
+          <Footer />
         </div>
       </body>
     </html>
