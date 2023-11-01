@@ -1,0 +1,60 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Balise {
+  id         String  @id @default(uuid())
+  numBalise  String
+  latitude   Float
+  longitude  Float
+  lieu       String
+  visible    Boolean @default(false)
+  difficulte String
+
+  idClub String
+  club   Club   @relation(fields: [idClub], references: [id])
+
+  type   TypeBalise @relation(fields: [typeId], references: [id])
+  typeId String
+}
+
+model TypeBalise {
+  id          String @id @default(uuid())
+  name        String
+  slug        String
+  description String
+
+  Balise Balise[]
+  Quote  Quote[]
+}
+
+model Club {
+  id      String @id @default(uuid())
+  name    String
+  adresse String
+  mail    String
+  numFFVL Int
+
+  Balise Balise[]
+  Quote  Quote[]
+}
+
+model Quote {
+  id        String   @id @default(uuid())
+  status    Int      @default(1)
+  dateOrder DateTime
+
+  type   TypeBalise @relation(fields: [typeId], references: [id])
+  typeId String
+  
+  club   Club       @relation(fields: [clubId], references: [id])
+  clubId String
+}
