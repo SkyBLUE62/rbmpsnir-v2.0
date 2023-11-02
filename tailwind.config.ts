@@ -34,6 +34,10 @@ const config: Config = {
         '1/4-screen': '25vh',
         '2/3-screen': '66vh',
         '3/4-screen': '75vh',
+      },
+      zIndex: {
+        60: '60',
+        70: '70',
       }
     },
   },
