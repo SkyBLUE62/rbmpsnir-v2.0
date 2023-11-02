@@ -1,8 +1,8 @@
 "use server";
-
+import { BtnNav } from "./uiNav/BtnNav";
 export const Header = async () => {
   return (
-    <div className="z-40 h-[10vh] max-w-9xl mx-auto w-full flex flex-row items-center justify-between">
+    <div className="z-60 h-[10vh] max-w-9xl mx-auto w-full flex flex-row items-center justify-between">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="102"
@@ -18,45 +18,7 @@ export const Header = async () => {
         />
       </svg>
 
-      <div className="bg-primary h-14 z-40 w-14 flex items-center justify-center">
-        <button className="w-auto h-auto ">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="29"
-            height="17"
-            viewBox="0 0 29 17"
-            fill="none"
-          >
-            <line
-              x1="1.5"
-              y1="1.5"
-              x2="27.5"
-              y2="1.5"
-              stroke="white"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-            <line
-              x1="1.5"
-              y1="8.5"
-              x2="27.5"
-              y2="8.5"
-              stroke="white"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-            <line
-              x1="1.5"
-              y1="15.5"
-              x2="27.5"
-              y2="15.5"
-              stroke="white"
-              strokeWidth="3"
-              strokeLinecap="round"
-            />
-          </svg>
-        </button>
-      </div>
+      <BtnNav />
     </div>
   );
 };
