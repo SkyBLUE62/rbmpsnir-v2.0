@@ -1,5 +1,10 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
+enum Difficulte {
+  debutant
+  intermediaire
+  expert
+}
 
 generator client {
   provider = "prisma-client-js"
@@ -11,13 +16,15 @@ datasource db {
 }
 
 model Balise {
-  id         String  @id @default(uuid())
+  id         String   @id @default(uuid())
   numBalise  String
   latitude   Float
   longitude  Float
   lieu       String
-  visible    Boolean @default(false)
+  visible    Boolean  @default(false)
   difficulte String
+  create_at  DateTime @default(now())
+  update_at  DateTime @default(now())
 
   idClub String
   club   Club   @relation(fields: [idClub], references: [id])
@@ -27,21 +34,25 @@ model Balise {
 }
 
 model TypeBalise {
-  id          String @id @default(uuid())
+  id          String   @id @default(uuid())
   name        String
   slug        String
   description String
+  create_at   DateTime @default(now())
+  update_at   DateTime @default(now())
 
   Balise Balise[]
   Quote  Quote[]
 }
 
 model Club {
-  id      String @id @default(uuid())
-  name    String
-  adresse String
-  mail    String
-  numFFVL Int
+  id        String   @id @default(uuid())
+  name      String
+  adresse   String
+  mail      String
+  numFFVL   Int
+  create_at DateTime @default(now())
+  update_at DateTime @default(now())
 
   Balise Balise[]
   Quote  Quote[]
@@ -50,11 +61,14 @@ model Club {
 model Quote {
   id        String   @id @default(uuid())
   status    Int      @default(1)
-  dateOrder DateTime
+  dateOrder DateTime @default(now())
+
+  create_at DateTime @default(now())
+  update_at DateTime @default(now())
 
   type   TypeBalise @relation(fields: [typeId], references: [id])
   typeId String
-  
-  club   Club       @relation(fields: [clubId], references: [id])
+
+  club   Club   @relation(fields: [clubId], references: [id])
   clubId String
 }
