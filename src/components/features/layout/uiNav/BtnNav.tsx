@@ -1,22 +1,25 @@
 "use client";
 
 import { useNavIsOpen } from "@/store/navIsOpen";
+import { useIsDisabledBtnNav } from "@/store/btnNavIsDisabled";
 import "../../../../styles/hamburger.css";
 
 export const BtnNav = () => {
   const { isOpen, changeIsOpen } = useNavIsOpen();
-  console.log(isOpen);
+  const { isDisabled } = useIsDisabledBtnNav();
+
   return (
     <div
       className={` ${
         isOpen && "bg-[#000000]"
-      } h-14 z-40 bg-primary cursor-pointer w-14 flex items-center justify-center`}
+      } h-14 z-40 bg-primary rounded-xl cursor-pointer w-14 flex items-center justify-center`}
     >
       <button
         className={`menu ${isOpen ? "opened" : ""} z-[9999] `}
         onClick={() => changeIsOpen(!isOpen)}
         aria-label="Main Menu"
         aria-expanded={isOpen}
+        disabled={isDisabled}
       >
         <svg width="50" height="50" viewBox="0 0 100 100">
           <path
