@@ -21,6 +21,7 @@ model Balise {
   latitude   Float
   longitude  Float
   lieu       String
+  slug       String   @default("")
   visible    Boolean  @default(false)
   difficulte String
   create_at  DateTime @default(now())
