@@ -1,57 +1,119 @@
 "use client";
 
+import { useEffect, useRef } from "react";
+
 import { useNavIsOpen } from "@/store/navIsOpen";
+import { useIsDisabledBtnNav } from "@/store/btnNavIsDisabled";
+
 import { gsap } from "gsap";
-import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 
 export const Nav = () => {
   const { isOpen } = useNavIsOpen();
-  const containerNav = useRef<HTMLDivElement>(null);
+  const { changeIsDisabled } = useIsDisabledBtnNav();
 
-  const [renderNav, setRenderNav] = useState<boolean>(false);
+  const containerNav = useRef<HTMLDivElement>(null);
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     if (isOpen) {
+      changeIsDisabled(true);
       document.body.style.overflow = "hidden";
       containerNav.current?.classList.remove("hidden");
-      
+
       gsap.fromTo(
         containerNav.current,
         { width: 0, height: 0 },
         { width: "100%", height: "100vh", duration: 0.5 }
       );
+
+      gsap.fromTo(
+        navRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.2, delay: 0.5 }
+      );
+
+      setTimeout(() => {
+        changeIsDisabled(false);
+      }, 500);
     } else {
+      changeIsDisabled(true);
       document.body.style.overflow = "auto";
+      gsap.fromTo(
+        navRef.current,
+        { opacity: 1 },
+        { opacity: 0, duration: 0.5 }
+      );
       gsap.fromTo(
         containerNav.current,
         { width: "100%", height: "100vh" },
-        { width: "0%", height: "0%", duration: 0.5 }
+        { width: "0%", height: "0%", duration: 0.5, delay: 0.5 }
       );
-
+      setTimeout(() => {
+        changeIsDisabled(false);
+      }, 500);
       setTimeout(() => {
         containerNav.current?.classList.add("hidden");
       }, 1000);
     }
-  }, [isOpen]);
+  }, [isOpen, changeIsDisabled]);
 
   return (
     <div
       ref={containerNav}
       className="absolute top-0 hidden right-0 h-screen w-screen bg-[#000000] z-50"
     >
-      <nav className="h-full w-full flex flex-row gap-36 justify-center items-center font-montserrat text-4xl text-primary font-semibold">
+      <nav
+        ref={navRef}
+        className="h-full w-full flex flex-row gap-36 justify-center items-center font-montserrat text-4xl text-primary font-semibold"
+      >
         <ul className="flex flex-col gap-16 h-1/5">
-          <li>Home</li>
-          <li>List of beacons</li>
-          <li>Partenariats</li>
-          <li>Contact</li>
+          <Link
+            href={"/home"}
+            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+          >
+            <li>Home</li>
+          </Link>
+          <Link
+            href={"/beacons"}
+            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+          >
+            <li>List of beacons</li>
+          </Link>
+          <Link
+            href={"/partners"}
+            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+          >
+            <li>Partenariats</li>
+          </Link>
+          <Link
+            href={"mailto:pro.thomas.alexandre@gmail.com"}
+            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+          >
+            <li>Contact</li>
+          </Link>
         </ul>
         <ul className="flex flex-col gap-16 h-1/5">
-          <li>rbmp-snir.com</li>
-          <li>Mentions légales</li>
-          <li className="text-center">
-            Conditions générales <br /> d{"'"}utilisation
-          </li>
+          <Link
+            href={"https://rbmp-snir.com"}
+            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+          >
+            <li>rbmp-snir.com</li>
+          </Link>
+          <Link
+            href={"/mentions-legales"}
+            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+          >
+            <li>Mentions légales</li>
+          </Link>
+          <Link
+            href={"/conditions-utilisation"}
+            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+          >
+            <li className="text-center">
+              Conditions générales <br /> d{"'"}utilisation
+            </li>
+          </Link>
         </ul>
       </nav>
     </div>
