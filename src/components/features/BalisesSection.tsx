@@ -1,5 +1,5 @@
 "use server";
-import { prisma } from "../../../prisma/db/prisma";
+import prisma from "../../../prisma/db/prisma";
 import { FiltersHome } from "../map/FiltersHome";
 import { MapHome } from "../map/MapHome";
 import { BalisesTab } from "./BalisesTab";
