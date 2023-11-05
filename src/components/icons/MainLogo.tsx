@@ -3,7 +3,6 @@ import { usePathname } from "next/navigation";
 
 export const MainLogo = () => {
   const pathname = usePathname();
-  console.log(pathname);
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
