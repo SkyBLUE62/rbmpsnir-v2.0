@@ -4,6 +4,7 @@ import prisma from "../../../../prisma/db/prisma";
 import type { Balise } from "@prisma/client";
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import { WindDirectionGraph } from "@/components/graph/WindDirectionGraph";
 
 const page = async ({ params }: { params: { slug: string } }) => {
   let beaconData: Balise;
@@ -52,13 +53,13 @@ const page = async ({ params }: { params: { slug: string } }) => {
                       {current.temp.toFixed(0)} C°
                     </span>
                   </div>
-                  <div className="relative h-full w-full bg-orange-500">
-                    <div className="absolute w-36 h-36 border-2 border-dotted  rounded-full left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                    <div className="absolute w-16 h-16 border-2 rounded-full left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
-                  </div>
+
+                  <WindDirectionGraph current={current} />
 
                   <div className="h-auto relative bg-secondary rounded-3xl shadow-lg shadow-black">
-                    sunset
+                    
+                    
+
                   </div>
                   <div className="h-auto relative bg-secondary rounded-3xl shadow-lg shadow-black">
                     pression
