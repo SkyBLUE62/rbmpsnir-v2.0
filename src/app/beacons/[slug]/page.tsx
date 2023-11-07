@@ -5,7 +5,8 @@ import type { Balise } from "@prisma/client";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import { WindDirectionGraph } from "@/components/graph/WindDirectionGraph";
-import {SunriseGraph} from "@/components/graph/SunriseGraph";
+import { SunriseGraph } from "@/components/graph/SunriseGraph";
+import { PressureCard } from "@/components/graph/PressureCard";
 
 const page = async ({ params }: { params: { slug: string } }) => {
   let beaconData: Balise;
@@ -54,16 +55,29 @@ const page = async ({ params }: { params: { slug: string } }) => {
                       {current.temp.toFixed(0)} C°
                     </span>
                   </div>
-
+                  
                   <WindDirectionGraph current={current} />
 
-                  <div className="h-auto relative bg-secondary rounded-3xl shadow-lg shadow-black">
-                    <SunriseGraph />
+                  <div className="h-auto relative  rounded-3xl">
+                    <div className="w-full flex flex-row justify-start items-center">
+                      <Image
+                        src={"/assets/images/icons/weather/sunrise.svg"}
+                        alt="weather"
+                        width={32}
+                        height={32}
+                      />
+                      <span className="text-lg font-montserrat text-primary">
+                        Sunset
+                      </span>
+                    </div>
+
+                    <SunriseGraph current={current} />
                   </div>
-                  <div className="h-auto relative bg-secondary rounded-3xl shadow-lg shadow-black">
-                    pression
-                  </div>
+                  
+                    <PressureCard current={current} />
+
                 </div>
+
               </div>
             </div>
             <div className=" col-span-2 h-auto relative bg-primary rounded-3xl shadow-lg shadow-black"></div>
