@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 export const QuoteSection = () => {
   return (
-    <div className="h-screen mt-[20vh] flex items-center">
+    <div className="h-screen mt-[20vh] flex items-center bg-secondary">
       <div className="max-w-9xl mx-auto h-full flex flex-col gap-16 font-montserrat text-primary items-center justify-center ">
         <span className="flex items-center justify-center text-secondary font-semibold text-5xl font-monument ">
           Our beacons offers
