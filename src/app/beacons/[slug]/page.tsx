@@ -1,5 +1,8 @@
 "use server";
-import { fetchOpenWeatherData } from "@/functions/fetchOpenWeatherData";
+import {
+  fetchHistoryLastDay,
+  fetchOpenWeatherData,
+} from "@/functions/fetchOpenWeatherData";
 import prisma from "../../../../prisma/db/prisma";
 import type { Balise } from "@prisma/client";
 import { notFound } from "next/navigation";
@@ -7,6 +10,9 @@ import Image from "next/image";
 import { WindDirectionGraph } from "@/components/graph/WindDirectionGraph";
 import { SunriseGraph } from "@/components/graph/SunriseGraph";
 import { PressureCard } from "@/components/graph/PressureCard";
+import { WeatherForecast } from "@/components/weather/WeatherForecast";
+import { DailyTempGraph } from "@/components/graph/DailyTempGraph";
+import { HourlyData } from "@/dto/openweather";
 
 const page = async ({ params }: { params: { slug: string } }) => {
   let beaconData: Balise;
@@ -18,7 +24,6 @@ const page = async ({ params }: { params: { slug: string } }) => {
         visible: true,
       },
     });
-    console.log(beaconData);
   } catch (error) {
     notFound();
   }
@@ -30,12 +35,29 @@ const page = async ({ params }: { params: { slug: string } }) => {
     latitude: latitude,
   });
 
+  const currentTimestamp: number = Math.floor(Date.now() / 1000);
+
+  const historyDataLastDay = await fetchHistoryLastDay({
+    longitude: longitude,
+    latitude: latitude,
+    start: currentTimestamp - 86400,
+  });
+
+  const historyDataCurrentDay = await fetchHistoryLastDay({
+    longitude: longitude,
+    latitude: latitude,
+    start: currentTimestamp,
+  });
+
+  const historyData: HourlyData[] = historyDataLastDay.hourly.concat(
+    historyDataCurrentDay.hourly
+  );
+
   const { current, hourly, daily } = dataOpenWeather;
-  console.log(current);
 
   return (
     <>
-      <div className="h-[90vh] w-full pb-8">
+      <div className="h-[90vh] w-full py-8 bg-primary bg-opacity-90">
         <div className="h-full w-full max-w-9xl mx-auto">
           <div className="grid grid-cols-3 grid-rows-2  h-full w-full gap-8 ">
             <div className="grid grid-cols-1 grid-rows-1 h-full w-full gap-8 ">
@@ -55,7 +77,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
                       {current.temp.toFixed(0)} C°
                     </span>
                   </div>
-                  
+
                   <WindDirectionGraph current={current} />
 
                   <div className="h-auto relative  rounded-3xl">
@@ -73,15 +95,18 @@ const page = async ({ params }: { params: { slug: string } }) => {
 
                     <SunriseGraph current={current} />
                   </div>
-                  
-                    <PressureCard current={current} />
 
+                  <PressureCard current={current} />
                 </div>
-
               </div>
             </div>
-            <div className=" col-span-2 h-auto relative bg-primary rounded-3xl shadow-lg shadow-black"></div>
-            <div className=" col-span-3 h-auto bg-primary rounded-3xl shadow-lg shadow-black">
+            <div className=" col-span-2 h-auto relative bg-primary rounded-3xl shadow-lg shadow-black">
+              <WeatherForecast daily={daily} />
+            </div>
+            <div className="col-span-2 relative h-auto bg-primary rounded-3xl shadow-lg shadow-black">
+              <DailyTempGraph historyData={historyData} />
+            </div>
+            <div className="col-span-1 h-auto bg-primary rounded-3xl shadow-lg shadow-black">
               htrehrt
             </div>
           </div>
