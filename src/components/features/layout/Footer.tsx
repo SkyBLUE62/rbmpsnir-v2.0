@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 export const Footer = () => {
   return (
-    <div className="h-1/4-screen w-full bg-primary text-primary font-montserrat">
+    <div className="h-1/4-screen w-full bg-primary text-primary font-montserrat shadow-xl shadow-black">
       <div className="max-w-9xl mx-auto h-full w-full  flex flex-col items-center justify-around">
         <div className="flex flex-row h-full w-full items-center justify-around">
           <svg
