@@ -48,7 +48,6 @@ export const SunriseGraph = ({ current }: Props) => {
     // Vérifier si l'heure est dans la plage entre sunrise et sunset
     if (hour >= intHoursSunrise && hour <= floatHoursSunset) {
       if (intHoursSunrise >= hour && intHoursSunrise <= hour + 1) {
-        console.log("test");
         labels.push(hoursSunrise);
       } else if (floatHoursSunset >= hour && floatHoursSunset <= hour + 1) {
         labels.push(hoursSunset);
