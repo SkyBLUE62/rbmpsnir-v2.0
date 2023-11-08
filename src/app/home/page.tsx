@@ -10,7 +10,7 @@ export default async function Home() {
       <Hero />
       <div className="h-screen bg-primary relative">
         {/* @ts-expect-error Server Component */}
-        {/* <BalisesSection /> */}
+        <BalisesSection />
         <Analytics />
       </div>
       <QuoteSection />
