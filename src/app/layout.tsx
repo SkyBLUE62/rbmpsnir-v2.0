@@ -16,11 +16,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="min-h-screen w-auto flex flex-col flex-1 relative overflow-x-hidden">
-          {/* @ts-expect-error Server Component */}
+        <div className="min-h-screen w-auto flex flex-col flex-1 relative overflow-x-hidden bg-secondary">
           <Header />
           <Nav />
-          
           {children}
           <Footer />
         </div>
