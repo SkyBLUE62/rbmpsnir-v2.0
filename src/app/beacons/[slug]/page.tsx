@@ -13,6 +13,7 @@ import { PressureCard } from "@/components/graph/PressureCard";
 import { WeatherForecast } from "@/components/weather/WeatherForecast";
 import { DailyTempGraph } from "@/components/graph/DailyTempGraph";
 import { HourlyData } from "@/dto/openweather";
+import { DetailsBeaconMap } from "@/components/map/DetailsBeaconMap";
 
 const page = async ({ params }: { params: { slug: string } }) => {
   let beaconData: Balise;
@@ -28,7 +29,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
     notFound();
   }
 
-  const { longitude, latitude, lieu } = beaconData;
+  const { longitude, latitude, lieu, difficulte } = beaconData;
 
   const dataOpenWeather = await fetchOpenWeatherData({
     longitude: longitude,
@@ -54,7 +55,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
   );
 
   const { current, hourly, daily } = dataOpenWeather;
-
+  console.log(beaconData);
   return (
     <>
       <div className="h-[90vh] w-full py-8 bg-primary bg-opacity-90">
@@ -106,8 +107,13 @@ const page = async ({ params }: { params: { slug: string } }) => {
             <div className="col-span-2 relative h-auto bg-primary rounded-3xl shadow-lg shadow-black">
               <DailyTempGraph historyData={historyData} />
             </div>
-            <div className="col-span-1 h-auto bg-primary rounded-3xl shadow-lg shadow-black">
-              htrehrt
+            <div className="col-span-1 relative h-auto bg-primary rounded-3xl shadow-lg shadow-black">
+              <DetailsBeaconMap
+                latitude={latitude}
+                longitude={longitude}
+                lieu={lieu}
+                difficulte={difficulte}
+              />
             </div>
           </div>
         </div>
