@@ -39,6 +39,7 @@ model TypeBalise {
   name        String
   slug        String
   description String
+  image       String   @default("")
   create_at   DateTime @default(now())
   update_at   DateTime @default(now())
 
