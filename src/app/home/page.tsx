@@ -3,8 +3,10 @@ import { Hero } from "@/components/features/Hero";
 import { BalisesSection } from "@/components/features/BalisesSection";
 import { QuoteSection } from "@/components/features/QuoteSection";
 import { Analytics } from "@/components/features/Analytics";
-
+import prisma from "../../../prisma/db/prisma";
+import { TypeBalise } from "@prisma/client";
 export default async function Home() {
+  const typeBeacons: TypeBalise[] = await prisma.typeBalise.findMany({});
   return (
     <>
       <Hero />
@@ -13,7 +15,7 @@ export default async function Home() {
         <BalisesSection />
         <Analytics />
       </div>
-      <QuoteSection />
+      <QuoteSection typeBeacons={typeBeacons} />
     </>
   );
 }
