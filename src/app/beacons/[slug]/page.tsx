@@ -55,7 +55,6 @@ const page = async ({ params }: { params: { slug: string } }) => {
   );
 
   const { current, hourly, daily } = dataOpenWeather;
-  console.log(beaconData);
   return (
     <>
       <div className="h-[90vh] w-full py-8 bg-primary bg-opacity-90">
