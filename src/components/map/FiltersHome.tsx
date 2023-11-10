@@ -5,7 +5,6 @@ import { useFilterDifficulty } from "@/store/filterDifficultyMap";
 export const FiltersHome = () => {
   const { changeDifficulty, resetDifficulty, difficultyFilter }: any =
     useFilterDifficulty();
-  console.log(difficultyFilter);
 
   return (
     <div className="relative h-1/2-screen w-[4%] bg-gray-300 shadow-2xl rounded-full flex flex-col items-center justify-around">
