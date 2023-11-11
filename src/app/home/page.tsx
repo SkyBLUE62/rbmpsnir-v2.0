@@ -7,7 +7,6 @@ import prisma from "../../../prisma/db/prisma";
 import { TypeBalise } from "@prisma/client";
 export default async function Home() {
   const typeBeacons: TypeBalise[] = await prisma.typeBalise.findMany({});
-  console.log(typeBeacons);
   return (
     <>
       <Hero />
