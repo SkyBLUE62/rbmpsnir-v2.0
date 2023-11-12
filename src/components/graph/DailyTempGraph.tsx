@@ -84,8 +84,13 @@ export const DailyTempGraph = ({ historyData }: Props) => {
   };
 
   return (
-    <div className="h-[90%] w-full  bottom-0 absolute">
-      <Line data={data} options={options} className="w-full h-full" />
-    </div>
+    <>
+      <span className="absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-primary font-monument">
+        Temperature in the last few hours
+      </span>
+      <div className="h-[85%] w-full  bottom-0 absolute">
+        <Line data={data} options={options} className="w-full h-full" />
+      </div>
+    </>
   );
 };
