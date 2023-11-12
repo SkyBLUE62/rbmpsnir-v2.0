@@ -17,6 +17,10 @@ export const QuoteSection = ({ typeBeacons }: Props) => {
     setOpenModalId(id);
     document.body.style.overflow = "hidden";
   };
+  const closeModal = () => {
+    setOpenModalId(null);
+    document.body.style.overflow = "auto";
+  };
   return (
     <div className="h-screen mt-[20vh] flex items-center bg-secondary">
       <div className="max-w-9xl mx-auto h-full flex flex-col gap-16 font-montserrat text-primary items-center justify-center ">
@@ -47,7 +51,10 @@ export const QuoteSection = ({ typeBeacons }: Props) => {
                 </div>
                 <BtnFormQuote id={id} setOpenModalId={() => openModal(id)} />
                 {openModalId === id && (
-                  <FormQuote beaconDetail={typeBeacons[index]} />
+                  <FormQuote
+                    beaconDetail={typeBeacons[index] as TypeBalise}
+                    closeModal={closeModal}
+                  />
                 )}
               </div>
             </div>
