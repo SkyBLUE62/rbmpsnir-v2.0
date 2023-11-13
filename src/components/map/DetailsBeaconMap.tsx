@@ -71,7 +71,7 @@ export const DetailsBeaconMap = ({
       center={[latitude, longitude]}
       zoom={5}
       scrollWheelZoom={true}
-      className="rounded-2xl"
+      className="rounded-2xl z-10"
     >
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
       <Marker
