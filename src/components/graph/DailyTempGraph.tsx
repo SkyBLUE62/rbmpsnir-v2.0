@@ -33,12 +33,10 @@ type Props = {
 export const DailyTempGraph = ({ historyData }: Props) => {
   const labels: string[] = [];
   const tempData: number[] = [];
-  console.log(historyData[0].dt);
   historyData.map((item) => {
     labels.push(convertDTtoHours(item.dt));
     tempData.push(item.temp);
   });
-  console.log(labels);
 
   const data: any = {
     labels: labels,
