@@ -20,12 +20,7 @@ export const WeatherForecastCard = ({
       <span className="font-monsterrat text-xl font-semibold ">{day}</span>
       <div className="w-3/4 h-[1px] bg-primary"></div>
       <div className="flex flex-col font-monument items-center justify-around">
-        <Image
-          src="/assets/images/icons/weather/clear-day.svg"
-          alt="weather"
-          width={48}
-          height={48}
-        ></Image>
+        <Image src={icon} alt="weather" width={48} height={48}></Image>
         <span className="text-sm">{temp.toFixed(0)}°C</span>
       </div>
       <div className="flex flex-col font-monument items-center justify-around">
