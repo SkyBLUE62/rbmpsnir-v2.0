@@ -1,10 +1,20 @@
 "use client";
+
+import { addQuoteAction } from "@/serverActions/Quote/addQuote.action";
 import type { TypeBalise } from "@prisma/client";
 import Image from "next/image";
 
 type FormQuoteProps = {
   beaconDetail: TypeBalise;
   closeModal: () => void;
+};
+
+type FormData = {
+  club: string;
+  ffvlNumber: string;
+  email: string;
+  address: string;
+  beaconIdType: string;
 };
 
 export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
@@ -24,7 +34,10 @@ export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
         </button>
       </div>
       <div className="w-full h-[1px] bg-white"></div>
-      <form className="w-full h-full px-4 py-4 flex flex-col items-center justify-start gap-6">
+      <form
+        className="w-full h-full px-4 py-4 flex flex-col items-center justify-start gap-6"
+        action={async () => await addQuoteAction}
+      >
         <div className="flex flex-row items-center justify-around w-full">
           <div className="flex flex-col">
             <label htmlFor="">Club</label>
@@ -85,7 +98,7 @@ export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
             />
           </div>
         </div>
-        <input type="hidden" name="beaconId" value={beaconDetail.id} />
+        <input type="hidden" name="beaconIdType" value={beaconDetail.id} />
         <button
           type="submit"
           className="bg-orange-600 rounded-3xl py-2 px-4 text-primary font-montserrat font-semibold hover:transform hover:scale-110"
