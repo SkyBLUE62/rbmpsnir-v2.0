@@ -14,6 +14,7 @@ import { WeatherForecast } from "@/components/weather/WeatherForecast";
 import { DailyTempGraph } from "@/components/graph/DailyTempGraph";
 import { HourlyData } from "@/dto/openweather";
 import { DetailsBeaconMap } from "@/components/map/DetailsBeaconMap";
+import { IDToIconOpenWeather } from "@/functions/IDToIconOpenWeather";
 
 const page = async ({ params }: { params: { slug: string } }) => {
   let beaconData: Balise;
@@ -55,6 +56,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
   );
 
   const { current, hourly, daily } = dataOpenWeather;
+  const iconById = IDToIconOpenWeather(current.weather[0].id);
   return (
     <>
       <div className="h-[90vh] w-full py-8 bg-primary bg-opacity-90">
@@ -68,7 +70,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
                 <div className="h-[88%] w-full grid grid-cols-2 grid-rows-2 gap-8 py-2 px-2">
                   <div className="h-auto relative  flex flex-row items-center justify-around">
                     <Image
-                      src="/assets/images/icons/weather/clear-day.svg"
+                      src={iconById}
                       alt="weather"
                       width={100}
                       height={100}
