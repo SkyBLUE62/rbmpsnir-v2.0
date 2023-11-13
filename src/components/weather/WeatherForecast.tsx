@@ -1,6 +1,7 @@
 "use server";
 import { DailyData } from "@/dto/openweather";
 import { WeatherForecastCard } from "./WeatherForecastCard";
+import { IDToIconOpenWeather } from "@/functions/IDToIconOpenWeather";
 
 type Props = {
   daily: DailyData[];
@@ -27,15 +28,15 @@ export const WeatherForecast = ({ daily }: Props) => {
 
     return day;
   }
-
   for (let index = 1; index <= forecastDays; index++) {
+    console.log(daily[index].weather[0].id);
     forecastCards.push(
       <WeatherForecastCard
         key={index}
         temp={daily[index].temp.day}
         wind={daily[index].wind_speed}
         humidity={daily[index].humidity}
-        icon={daily[index].weather[0].icon}
+        icon={IDToIconOpenWeather(daily[index].weather[0].id)}
         day={getDayFromTimestamp(daily[index].dt)}
       />
     );
