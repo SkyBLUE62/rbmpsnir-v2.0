@@ -4,8 +4,11 @@ import dynamic from "next/dynamic";
 
 import { FiltersHome } from "../map/FiltersHome";
 import { BalisesTab } from "./BalisesTab";
-const MapHome = dynamic(() => import("../map/MapHome"), { ssr: false });
-
+const MapHome = dynamic(() => import("../map/MapHome"), {
+  ssr: false,
+  loading: () => <MapSkeleton />,
+});
+import { MapSkeleton } from "../loading/MapSkeleton";
 export const BalisesSection = async () => {
   const beacons = await prisma.balise.findMany({
     where: {
