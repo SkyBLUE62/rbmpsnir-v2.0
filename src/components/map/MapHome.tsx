@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
 import { Balise } from "@prisma/client";
 import { difficulteIcon } from "@/functions/difficulteIcon";
+
 const MapContainer = dynamic(
   () => import("react-leaflet").then((module) => module.MapContainer),
   {
@@ -38,7 +39,7 @@ type Props = {
   beacons: Balise[];
 };
 
-export const MapHome = ({ beacons }: Props) => {
+const MapHome = ({ beacons }: Props) => {
   const [ready, setReady] = useState<boolean>(false);
   const { difficultyFilter } = useFilterDifficulty();
 
@@ -73,3 +74,5 @@ export const MapHome = ({ beacons }: Props) => {
     )
   );
 };
+
+export default MapHome;
