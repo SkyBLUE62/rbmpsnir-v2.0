@@ -52,7 +52,7 @@ model Club {
   name      String
   adresse   String
   mail      String
-  numFFVL   Int
+  numFFVL   String
   create_at DateTime @default(now())
   update_at DateTime @default(now())
 
