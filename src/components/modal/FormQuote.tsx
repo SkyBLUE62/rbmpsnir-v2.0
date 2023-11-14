@@ -3,23 +3,17 @@
 import { addQuoteAction } from "@/serverActions/Quote/addQuote.action";
 import type { TypeBalise } from "@prisma/client";
 import Image from "next/image";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 type FormQuoteProps = {
   beaconDetail: TypeBalise;
   closeModal: () => void;
 };
 
-type FormData = {
-  club: string;
-  ffvlNumber: string;
-  email: string;
-  address: string;
-  beaconIdType: string;
-};
-
 export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/2 bg-primary rounded-3xl z-70 text-white border-primary border ">
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/2 bg-primary rounded-3xl z-70 text-white border-primary border">
       <div className="py-4 flex items-center justify-center bg-secondary rounded-t-3xl relative">
         <span className="text-3xl font-monument font-semibold text-secondary">
           Quote form
@@ -36,7 +30,21 @@ export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
       <div className="w-full h-[1px] bg-white"></div>
       <form
         className="w-full h-full px-4 py-4 flex flex-col items-center justify-start gap-6"
-        action={async () => await addQuoteAction}
+        action={async (formAction) => {
+          const status = await addQuoteAction(formAction);
+          if (status?.message) {
+            toast.error("🦄 Wow so easy!", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+          }
+        }}
       >
         <div className="flex flex-row items-center justify-around w-full">
           <div className="flex flex-col">
