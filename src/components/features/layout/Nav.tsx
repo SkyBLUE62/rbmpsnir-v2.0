@@ -9,7 +9,7 @@ import { gsap } from "gsap";
 import Link from "next/link";
 
 export const Nav = () => {
-  const { isOpen } = useNavIsOpen();
+  const { isOpen, changeIsOpen } = useNavIsOpen();
   const { changeIsDisabled } = useIsDisabledBtnNav();
 
   const containerNav = useRef<HTMLDivElement>(null);
@@ -65,49 +65,56 @@ export const Nav = () => {
     >
       <nav
         ref={navRef}
-        className="h-full w-full flex flex-row gap-36 justify-center items-center font-montserrat text-4xl text-primary font-semibold"
+        className="h-full w-full flex flex-col md:flex-row md:gap-36 gap-4 justify-center items-center font-montserrat text-2xl md:text-4xl text-primary font-semibold"
       >
-        <ul className="flex flex-col gap-16 h-1/5">
+        <ul className="flex flex-col md:gap-16 gap-4 items-center justify-center md:justify-start md:items-start h-auto md:h-1/5">
           <Link
             href={"/home"}
+            onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             <li>Home</li>
           </Link>
           <Link
             href={"/beacons"}
+            onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             <li>List of beacons</li>
           </Link>
           <Link
             href={"/partners"}
+            onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             <li>Partenariats</li>
           </Link>
           <Link
             href={"mailto:pro.thomas.alexandre@gmail.com"}
+            onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             <li>Contact</li>
           </Link>
         </ul>
-        <ul className="flex flex-col gap-16 h-1/5">
+        <ul className="flex flex-col md:gap-16 gap-4 items-center justify-center md:justify-start md:items-start h-auto md:h-1/5">
           <Link
             href={"https://rbmp-snir.com"}
+            onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             <li>rbmp-snir.com</li>
           </Link>
           <Link
             href={"/mentions-legales"}
+            onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             <li>Mentions légales</li>
           </Link>
           <Link
             href={"/conditions-utilisation"}
+            onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             <li className="text-center">
