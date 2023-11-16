@@ -51,8 +51,12 @@ const MapHome = ({ beacons }: Props) => {
 
   return (
     ready && (
-      <div className="h-1/2-screen w-2/3 bg-gray-300 shadow-2xl rounded-3xl z-10 relative overflow-hidden">
-        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={true}>
+      <div className="h-1/2-screen md:w-2/3 w-full bg-gray-300 shadow-2xl rounded-3xl z-10 relative overflow-hidden">
+        <MapContainer
+          center={[48.8566, 2.3522]}
+          zoom={2}
+          scrollWheelZoom={true}
+        >
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
 
           {beacons
