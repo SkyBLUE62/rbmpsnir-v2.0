@@ -2,15 +2,16 @@ import React from "react";
 import Image from "next/image";
 export const Footer = () => {
   return (
-    <div className="h-1/4-screen w-full bg-primary text-primary font-montserrat shadow-xl shadow-black">
-      <div className="max-w-9xl mx-auto h-full w-full  flex flex-col items-center justify-around">
-        <div className="flex flex-row h-full w-full items-center justify-around">
+    <div className="md:h-1/4-screen h-auto w-full bg-primary text-primary font-montserrat shadow-xl shadow-black  py-8 md:py-0">
+      <div className="max-w-9xl mx-auto h-full w-full flex flex-col items-center justify-around ">
+        <div className="flex md:flex-row flex-col h-full w-full items-center justify-around ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="102"
             height="27"
             viewBox="0 0 102 27"
             fill="none"
+            className="sm:block hidden"
           >
             <path
               fillRule="evenodd"
@@ -20,7 +21,7 @@ export const Footer = () => {
             />
           </svg>
           <div>
-            <ul className="text-lg flex flex-col">
+            <ul className="text-lg flex flex-col justify-center items-center md:items-start gap-4 w-2/3 mx-auto">
               <li>Home</li>
               <li>Partenariats</li>
               <li>Contact</li>
@@ -28,10 +29,12 @@ export const Footer = () => {
             </ul>
           </div>
           <div>
-            <ul className="text-lg flex flex-col">
+            <ul className="text-lg flex flex-col justify-center gap-4 items-center md:items-start w-2/3 mx-auto">
               <li>rbmp-snir.com</li>
               <li>Mentions légales</li>
-              <li>Conditions générales d{"'"}utilisation</li>
+              <li className="text-center">
+                Conditions générales d{"'"}utilisation
+              </li>
             </ul>
           </div>
         </div>
