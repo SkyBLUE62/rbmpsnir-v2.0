@@ -10,9 +10,7 @@ type Props = {
 };
 
 export const QuoteSection = ({ typeBeacons }: Props) => {
-  const [openModalId, setOpenModalId] = useState<string | null>(
-    "3748c34a-6a10-4e95-84a9-f8648a4c3b05"
-  );
+  const [openModalId, setOpenModalId] = useState<string | null>("");
   const openModal = (id: string) => {
     setOpenModalId(id);
     document.body.style.overflow = "hidden";
@@ -22,12 +20,12 @@ export const QuoteSection = ({ typeBeacons }: Props) => {
     document.body.style.overflow = "auto";
   };
   return (
-    <div className="h-screen mt-[20vh] flex items-center bg-secondary">
-      <div className="max-w-9xl mx-auto h-full flex flex-col gap-16 font-montserrat text-primary items-center justify-center ">
-        <span className="flex items-center justify-center text-secondary font-semibold text-5xl font-monument ">
+    <div className="md:h-screen h-auto mt-[20vh] flex items-center bg-secondary">
+      <div className="max-w-9xl mx-auto h-full flex flex-col md:gap-16 gap-0 font-montserrat text-primary items-center justify-center ">
+        <span className="flex text-center items-center justify-center text-secondary font-semibold text-5xl font-monument ">
           Our beacons offers
         </span>
-        <div className="grid grid-cols-4 gap-16 gap-y-6 h-auto w-full py-10">
+        <div className="grid md:grid-cols-4 grid-row-1 md:px-0 px-4 gap-16 gap-y-6 h-auto w-full py-10">
           {typeBeacons.map(({ name, image, id, description }, index) => (
             <div
               key={index}
