@@ -10,7 +10,7 @@ export const IDToIconOpenWeather = (id: number) => {
   } else if (id === 800) {
     return "/assets/images/icons/weather/clear-day.svg";
   } else if (id === 801) {
-    return "/assets/images/icons/weather/partly-cloudy.svg";
+    return "/assets/images/icons/weather/partly-cloudy-day.svg";
   } else if (id === 802) {
     return "/assets/images/icons/weather/cloudy.svg";
   } else if (id === 803 || id === 804) {
