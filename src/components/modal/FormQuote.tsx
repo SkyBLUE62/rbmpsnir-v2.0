@@ -3,7 +3,8 @@
 import { addQuoteAction } from "@/serverActions/Quote/addQuote.action";
 import type { TypeBalise } from "@prisma/client";
 import Image from "next/image";
-import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 type FormQuoteProps = {
@@ -13,9 +14,9 @@ type FormQuoteProps = {
 
 export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
   return (
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-1/3 h-1/2 bg-primary rounded-3xl z-70 text-white border-primary border">
-      <div className="py-4 flex items-center justify-center bg-secondary rounded-t-3xl relative">
-        <span className="text-3xl font-monument font-semibold text-secondary">
+    <div className="fixed top-1/2  left-1/2 transform -translate-x-1/2 -translate-y-1/2 md:w-1/3 md:h-1/2 w-3/4 h-auto sm:w-full sm:h-full px-4 bg-primary rounded-3xl z-70 text-white border-primary border">
+      <div className="py-4 flex items-center justify-center bg-secondary rounded-t-3xl sm:flex md:flex  absolute w-full left-0">
+        <span className="md:text-3xl font-monument font-semibold text-secondary">
           Quote form
         </span>
         <button className="absolute right-4" onClick={closeModal}>
@@ -27,13 +28,36 @@ export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
           />
         </button>
       </div>
+
       <div className="w-full h-[1px] bg-white"></div>
       <form
-        className="w-full h-full px-4 py-4 flex flex-col items-center justify-start gap-6"
-        action={async (formAction) => {
-          const status = await addQuoteAction(formAction);
-          if (status?.message) {
-            toast.error("🦄 Wow so easy!", {
+        className="w-full h-full mt-14 md:mt-0 px-4 py-4 flex flex-col items-center justify-start gap-6"
+        action={async (formAction: FormData) => {
+          const status: any = await addQuoteAction(formAction);
+          console.log(status.issues);
+          if (
+            status.issues &&
+            (status.status === "404" ||
+              status.status === "500" ||
+              status.status === "400")
+          ) {
+            for (let index = 0; index < status.issues.length; index++) {
+              console.log(status.issues[index]);
+              const msg =
+                status.issues[index].path + " " + status.issues[index].message;
+              toast.error(msg, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+              });
+            }
+          } else if (status?.status === "200") {
+            toast.success(status.message, {
               position: "top-right",
               autoClose: 5000,
               hideProgressBar: false,
@@ -43,10 +67,11 @@ export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
               progress: undefined,
               theme: "light",
             });
+            closeModal();
           }
         }}
       >
-        <div className="flex flex-row items-center justify-around w-full">
+        <div className="flex sm:flex-row flex-col gap-2 items-center justify-around w-full">
           <div className="flex flex-col">
             <label htmlFor="">Club</label>
             <input
@@ -65,7 +90,7 @@ export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
           </div>
         </div>
 
-        <div className="flex flex-row items-center justify-around w-full">
+        <div className="flex sm:flex-row flex-col gap-2 items-center justify-around w-full">
           <div className="flex flex-col">
             <label htmlFor="">Email</label>
             <input
@@ -84,7 +109,7 @@ export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
           </div>
         </div>
 
-        <div className="flex flex-row items-start justify-around w-full">
+        <div className="flex sm:flex-row flex-col gap-2 md:items-start sm:items-center  justify-around w-full">
           <div className="flex flex-col">
             <label htmlFor="">Beacon</label>
             <textarea
@@ -95,7 +120,7 @@ export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
               name="beacon"
             />
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col sm:hidden">
             <label htmlFor="">Description du produit</label>
             <textarea
               className="rounded-xl text-secondary px-2 py-1 resize-none h-28 outline-none focus:border focus:border-orange-600"
@@ -105,11 +130,19 @@ export const FormQuote = ({ beaconDetail, closeModal }: FormQuoteProps) => {
               name="description"
             />
           </div>
+
+          <button
+            type="submit"
+            className="bg-orange-600 md:hidden hidden sm:flex items-center justify-center rounded-3xl py-2 px-4 text-primary font-montserrat font-semibold hover:transform hover:scale-110"
+          >
+            Request a quote
+          </button>
         </div>
+
         <input type="hidden" name="beaconIdType" value={beaconDetail.id} />
         <button
           type="submit"
-          className="bg-orange-600 rounded-3xl py-2 px-4 text-primary font-montserrat font-semibold hover:transform hover:scale-110"
+          className="bg-orange-600 sm:hidden flex items-center justify-center rounded-3xl py-2 px-4 text-primary font-montserrat font-semibold hover:transform hover:scale-110"
         >
           Request a quote
         </button>
