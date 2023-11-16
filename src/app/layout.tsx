@@ -3,6 +3,7 @@ import "./globals.css";
 import { Header } from "@/components/features/layout/Header";
 import { Footer } from "@/components/features/layout/Footer";
 import { Nav } from "@/components/features/layout/Nav";
+import { ToastContainer } from "react-toastify";
 export const metadata: Metadata = {
   title: "rbmp-snir v2.0 | Home",
   description: "Home page of rbmp-snir v2.0",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <div className="min-h-screen w-auto flex flex-col flex-1 relative overflow-x-hidden bg-secondary">
           <Header />
           <Nav />
+          <ToastContainer />
           {children}
           <Footer />
         </div>
