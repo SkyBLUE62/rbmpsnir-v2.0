@@ -30,7 +30,6 @@ export const addQuoteAction = async (formData: FormData) => {
     const existingClub = await prisma.club.findFirst({
       where: {
         numFFVL: ffvlNumber,
-        mail: email,
       },
     });
 
@@ -45,28 +44,14 @@ export const addQuoteAction = async (formData: FormData) => {
         return { status: "200", message: "Quote added successfully" };
       }
     } else {
-      return { status: "404", message: "Club Not Found" };
+      return { status: "404", message: "Club Not Found", path: "" };
     }
   } catch (err) {
     if (err instanceof z.ZodError) {
-      console.log(err.issues[0].message);
       return {
         status: "400",
-        message: err.issues[0].message,
-        path: err.issues[0].path,
+        issues: err.issues,
       };
     }
   }
 };
-
-// export const addQuoteAction = async (formData: FormData) => {
-//   "use server";
-//   const club = formData.get("club") as string;
-//   const ffvlNumber = formData.get("ffvlNumber") as string;
-//   const email = formData.get("email") as string;
-//   const address = formData.get("address") as string;
-//   const beaconIdType = formData.get("beaconIdType") as string;
-//   console.log("formData", formData);
-//   console.log("beaconIdType", beaconIdType);
-//   console.log("address", address);
-// };
