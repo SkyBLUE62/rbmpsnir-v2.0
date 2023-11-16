@@ -21,13 +21,13 @@ export const BalisesSection = async () => {
 
   return (
     beacons && (
-      <div className="max-w-9xl h-screen w-full mx-auto ">
-        <div className="py-10 flex flex-col justify-center gap-24 h-full w-full">
-          <span className="flex items-center text-gray-300 justify-center font-monument font-bold text-5xl">
+      <div className="max-w-9xl md:h-screen h-auto py-4 md:py-0 px-4 md:px-0 w-full mx-auto ">
+        <div className="py-10 flex flex-col justify-center items-center gap-24 h-full w-full">
+          <span className="flex items-center text-center text-gray-300 justify-center font-monument font-bold text-5xl">
             The best spots in the world
           </span>
 
-          <div className="flex flex-row items-center w-full justify-around relative">
+          <div className="flex md:flex-row flex-col gap-4 md:gap-0 items-center w-full justify-around relative h-full">
             <FiltersHome />
             {/* @ts-expect-error Server Component */}
             <MapHome beacons={beacons} />
