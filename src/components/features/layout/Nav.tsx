@@ -61,13 +61,13 @@ export const Nav = () => {
   return (
     <div
       ref={containerNav}
-      className="absolute top-0 hidden right-0 h-screen w-screen bg-[#000000] z-50"
+      className="absolute top-0 hidden right-0 md:h-screen h-auto w-screen bg-[#000000] z-50"
     >
       <nav
         ref={navRef}
         className="h-full w-full flex flex-col md:flex-row md:gap-36 gap-4 justify-center items-center font-montserrat text-2xl md:text-4xl text-primary font-semibold"
       >
-        <ul className="flex flex-col md:gap-16 gap-4 items-center justify-center md:justify-start md:items-start h-auto md:h-1/5">
+        <ul className="flex flex-col lg:gap-16 gap-4 items-center justify-center lg:justify-start lg:items-start h-auto lg:h-1/5">
           <Link
             href={"/home"}
             onClick={() => changeIsOpen(false)}
@@ -97,7 +97,7 @@ export const Nav = () => {
             <li>Contact</li>
           </Link>
         </ul>
-        <ul className="flex flex-col md:gap-16 gap-4 items-center justify-center md:justify-start md:items-start h-auto md:h-1/5">
+        <ul className="flex flex-col lg:gap-16 gap-4 items-center justify-center lg:justify-start lg:items-start h-auto md:h-1/5">
           <Link
             href={"https://rbmp-snir.com"}
             onClick={() => changeIsOpen(false)}
