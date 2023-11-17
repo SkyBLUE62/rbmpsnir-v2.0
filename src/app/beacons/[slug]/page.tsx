@@ -59,11 +59,11 @@ const page = async ({ params }: { params: { slug: string } }) => {
   const iconById = IDToIconOpenWeather(current.weather[0].id);
   return (
     <>
-      <div className="h-[90vh] w-full py-8 bg-primary bg-opacity-90">
+      <div className="lg:h-[90vh] h-auto lg:px-0 px-4 w-full py-8 bg-primary bg-opacity-90">
         <div className="h-full w-full max-w-9xl mx-auto">
-          <div className="grid grid-cols-3 grid-rows-2  h-full w-full gap-8 ">
-            <div className="grid grid-cols-1 grid-rows-1 h-full w-full gap-8 ">
-              <div className="col-span-1 h-full w-full bg-primary rounded-3xl shadow-lg shadow-black">
+          <div className="grid lg:grid-cols-3 lg:grid-rows-2 grid-cols-1 place-items-center h-full w-full lg:gap-8 gap-y-4 ">
+            <div className="grid lg:grid-cols-1 lg:grid-rows-1 h-full w-full gap-8 ">
+              <div className="lg:col-span-1 col-span-2 h-full w-full bg-primary rounded-3xl shadow-lg shadow-black">
                 <h1 className="h-[12%] w-full bg-secondary text-secondary rounded-t-2xl flex items-center justify-center font-montserrat text-xl font-semibold">
                   {lieu}
                 </h1>
