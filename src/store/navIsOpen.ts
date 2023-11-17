@@ -1,9 +1,9 @@
-import { create } from 'zustand';
+import { create } from "zustand";
 
 type IsOpenStore = {
-  isOpen: boolean,
+  isOpen: boolean;
   changeIsOpen: (state: boolean) => void;
-}
+};
 
 const useNavIsOpen = create<IsOpenStore>((set) => ({
   isOpen: false,
