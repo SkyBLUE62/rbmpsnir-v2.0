@@ -10,7 +10,7 @@ type Props = {
 export const BalisesTab = ({ beacons }: Props) => {
   return (
     beacons && (
-      <div className="h-1/2-screen md:w-[25%] w-full relative overflow-y-scroll no-scrollbar bg-gray-300 shadow-2xl rounded-3xl">
+      <div className="h-1/2-screen md:w-[50%] lg:w-[25%]  w-full relative overflow-y-scroll no-scrollbar bg-gray-300 shadow-2xl rounded-3xl">
         <div className="bg-gray-200 uppercase z-40 w-full h-[10%] rounded-t-3xl flex justify-center items-center font-montserrat text-xl text-secondary font-bold shadow-xl ">
           Spots
         </div>
