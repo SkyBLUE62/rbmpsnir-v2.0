@@ -11,7 +11,7 @@ export const Footer = () => {
             height="27"
             viewBox="0 0 102 27"
             fill="none"
-            className="sm:block hidden"
+            className="md:block hidden"
           >
             <path
               fillRule="evenodd"
