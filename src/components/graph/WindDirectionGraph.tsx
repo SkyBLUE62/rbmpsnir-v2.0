@@ -33,7 +33,7 @@ export const WindDirectionGraph = ({ current }: Props) => {
   const windDirection = findWindDirection(wind_deg);
   return (
     <>
-      <div className="relative h-full w-full">
+      <div className="hidden xl:block relative h-full w-full">
         <div className="absolute opacity-50  w-32 h-32 border-2 border-dotted  rounded-full left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute opacity-50 z-30 w-16 h-16 border-2 rounded-full left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"></div>
 
