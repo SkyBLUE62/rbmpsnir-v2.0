@@ -30,7 +30,7 @@ type Props = {
   historyData: HourlyData[];
 };
 
-export const DailyTempGraph = ({ historyData }: Props) => {
+const DailyTempGraph = ({ historyData }: Props) => {
   const labels: string[] = [];
   const tempData: number[] = [];
   historyData.map((item) => {
@@ -83,7 +83,7 @@ export const DailyTempGraph = ({ historyData }: Props) => {
 
   return (
     <>
-      <span className="absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-primary font-monument">
+      <span className="absolute top-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-primary font-monument text-sm w-full text-center">
         Temperature in the last few hours
       </span>
       <div className="h-[85%] w-full  bottom-0 absolute">
@@ -92,3 +92,5 @@ export const DailyTempGraph = ({ historyData }: Props) => {
     </>
   );
 };
+
+export default DailyTempGraph;
