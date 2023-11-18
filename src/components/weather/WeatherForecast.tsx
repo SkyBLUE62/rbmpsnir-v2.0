@@ -43,7 +43,7 @@ export const WeatherForecast = ({ daily }: Props) => {
   }
 
   return (
-    <div className="w-full h-full  grid grid-cols-7 px-8 py-8 gap-8">
+    <div className="w-full h-full  grid lg:grid-cols-7 grid-cols-3 md:grid-cols-4 place-items-center px-8 py-8 gap-8">
       {forecastCards}
     </div>
   );
