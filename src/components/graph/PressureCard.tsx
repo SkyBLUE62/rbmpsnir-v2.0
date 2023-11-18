@@ -9,7 +9,7 @@ type Props = {
 export const PressureCard = ({ current }: Props) => {
   const { pressure } = current;
   return (
-    <div className="h-auto relative  rounded-3xl">
+    <div className="h-auto relative col-span-2  xl:col-span-1  rounded-3xl">
       <div className="w-full flex flex-row justify-start items-center">
         <Image
           src={"/assets/images/icons/weather/barometer.svg"}
