@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <div className="lg:h-screen h-auto bg-primary relative">
+      <div className="lg:h-screen h-auto bg-primary relative top-0">
         {/* @ts-expect-error Server Component */}
         <BalisesSection />
         <Analytics clubs={clubs} beacons={beacons} />
