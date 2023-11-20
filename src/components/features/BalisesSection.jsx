@@ -21,7 +21,7 @@ export const BalisesSection = async () => {
 
   return (
     beacons && (
-      <div className="max-w-9xl lg:h-screen h-auto py-4 lg:py-0 px-4 lg:px-0 w-full mx-auto ">
+      <div className="max-w-9xl lg:h-screen h-auto py-4 lg:py-0 px-4 lg:px-0 w-full">
         <div className="py-10 flex flex-col justify-center items-center gap-24 h-full w-full">
           <span className="flex items-center text-center text-gray-300 justify-center font-monument font-bold text-5xl">
             The best spots in the world
