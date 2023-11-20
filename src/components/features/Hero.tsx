@@ -10,7 +10,7 @@ export const Hero = () => {
         <span className="absolute  z-40 top-1/4 left-[15%] lg:text-7xl text-4xl font-monument font-bold text-primary">
           The
         </span>
-        <h1 className="absolute  z-40 h-auto w-full top-[35%] flex items-center justify-center  left-0  lg:text-11xl md:text-7xl text-5xl font-monument font-bold  ">
+        <h1 className="absolute z-40 h-auto w-full top-[35%] flex items-center justify-center  left-0  lg:text-11xl md:text-7xl text-5xl font-monument font-bold  ">
           <span className="text-primary ">RBM</span>
           <span className="bg-gradient-to-r from-[#E6E6E6] from-20% via-[#131212] to-[#131212] text-transparent bg-clip-text">
             P
