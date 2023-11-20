@@ -17,7 +17,7 @@ export const WeatherForecastCard = ({
 }: Props) => {
   return (
     <div className="w-full h-full text-secondary bg-secondary rounded-3xl flex flex-col items-center justify-between py-4 shadow-sm shadow-white">
-      <span className="font-monsterrat text-xl font-semibold ">{day}</span>
+      <span className="font-monsterrat text-xl lg:text-xs xl:text-xl font-semibold ">{day}</span>
       <div className="w-3/4 h-[1px] bg-primary"></div>
       <div className="flex flex-col font-monument items-center justify-around">
         <Image src={icon} alt="weather" width={48} height={48}></Image>
