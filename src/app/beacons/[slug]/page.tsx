@@ -70,11 +70,11 @@ const page = async ({ params }: { params: { slug: string } }) => {
   const iconById = IDToIconOpenWeather(current.weather[0].id);
   return (
     <>
-      <div className="xl:h-[90vh] h-auto lg:px-0 px-4 w-full py-8 bg-primary bg-opacity-90">
+      <div className="xl:h-[90vh] md:px-4 h-auto lg:px-4 xl:px-0 px-4 w-full py-8 bg-primary bg-opacity-90">
         <div className="h-full w-full max-w-9xl mx-auto">
-          <div className="grid lg:grid-cols-3 lg:grid-rows-2 grid-cols-1 place-items-center h-full w-full xl:gap-8 gap-y-4 gap-8">
-            <div className="grid lg:grid-cols-1 lg:grid-rows-1 h-full w-full gap-8 ">
-              <div className="lg:col-span-1 col-span-2 h-full w-full bg-primary rounded-3xl shadow-lg shadow-black">
+          <div className="grid lg:grid-cols-3 lg:grid-rows-2 grid-cols-1 mx-auto place-items-center h-full w-full xl:gap-8 gap-y-8 gap-0 md:gap-0 lg:gap-8">
+            <div className="grid lg:grid-cols-1 lg:grid-rows-1 h-full  w-full place-items-center mx-auto gap-8">
+              <div className="lg:col-span-1 col-span-2 h-full w-full mx-auto bg-primary rounded-3xl shadow-lg shadow-black">
                 <h1 className="h-[12%] w-full bg-secondary text-secondary rounded-t-2xl flex items-center justify-center font-montserrat text-xl font-semibold">
                   {lieu}
                 </h1>
@@ -87,7 +87,7 @@ const page = async ({ params }: { params: { slug: string } }) => {
                       height={100}
                       className="lg:w-[100px] lg:h-[100px] h-[75px] w-[75px]"
                     ></Image>
-                    <span className="lg:text-3xl text-sm font-monument text-primary font-light">
+                    <span className="lg:text-3xl md:text-xl text-sm font-monument text-primary font-light">
                       {current.temp.toFixed(0)} C°
                     </span>
                   </div>
@@ -114,13 +114,13 @@ const page = async ({ params }: { params: { slug: string } }) => {
                 </div>
               </div>
             </div>
-            <div className="col-span-2 w-full lg:w-auto lg:h-full h-auto relative bg-primary rounded-3xl shadow-lg shadow-black">
+            <div className="col-span-2 md:my-8 lg:my-0 w-full lg:w-auto lg:h-full h-auto relative bg-primary rounded-3xl shadow-lg shadow-black">
               <WeatherForecast daily={daily} />
             </div>
             <div className="col-span-2 relative w-full h-96  bg-primary rounded-3xl shadow-lg shadow-black">
               <DailyTempGraph historyData={historyData} />
             </div>
-            <div className="col-span-1 relative w-full h-96 bg-primary rounded-3xl shadow-lg shadow-black">
+            <div className="col-span-1 md:my-8 lg:my-0 relative w-full h-96 bg-primary rounded-3xl shadow-lg shadow-black">
               <DetailsBeaconMap
                 latitude={latitude}
                 longitude={longitude}
