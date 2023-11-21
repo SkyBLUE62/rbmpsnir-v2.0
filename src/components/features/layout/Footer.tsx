@@ -3,7 +3,7 @@ import Image from "next/image";
 export const Footer = () => {
   return (
     <div className="lg:h-1/4-screen h-auto w-full bg-primary text-primary font-montserrat shadow-xl shadow-black  py-8 lg:py-0">
-      <div className="max-w-9xl mx-auto h-full w-full flex flex-col items-center justify-around ">
+      <div className="max-w-9xl mx-auto h-full w-full flex flex-col items-center justify-around">
         <div className="flex md:flex-row flex-col h-full w-full items-center justify-around ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
