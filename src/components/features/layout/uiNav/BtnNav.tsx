@@ -12,7 +12,7 @@ export const BtnNav = () => {
     <div
       className={` ${
         isOpen && "bg-[#000000]"
-      } h-14 z-60 bg-primary rounded-xl cursor-pointer w-14 flex items-center justify-center `}
+      } h-14 z-60 bg-primary rounded-xl cursor-pointer w-14 flex items-center justify-center  sm:mt-2 md:mt-0`}
     >
       <button
         className={`menu ${isOpen ? "opened" : ""} z-[9999] `}
