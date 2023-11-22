@@ -1,15 +1,12 @@
-"use client";
-import { usePathname } from "next/navigation";
 
 export const MainLogo = () => {
-  const pathname = usePathname();
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="102"
       height="27"
       viewBox="0 0 102 27"
-      className="z-60"
+      className="z-60 sm:mt-2 md:mt-0"
     >
       <path
         fillRule="evenodd"
