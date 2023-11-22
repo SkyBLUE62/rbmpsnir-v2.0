@@ -76,15 +76,16 @@ export const Nav = () => {
             <li>Home</li>
           </Link>
           <Link
-            href={"/beacons"}
+            href={"/list-of-beacons"}
             onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             <li>List of beacons</li>
           </Link>
           <Link
-            href={"/partners"}
+            href={"https://federation.ffvl.fr/"}
             onClick={() => changeIsOpen(false)}
+            target="_blank"
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             <li>Partenariats</li>
@@ -106,20 +107,18 @@ export const Nav = () => {
             <li>rbmp-snir.com</li>
           </Link>
           <Link
-            href={"/mentions-legales"}
+            href={"/legal-mentions"}
             onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
-            <li>Mentions légales</li>
+            <li>Legal Mentions</li>
           </Link>
           <Link
-            href={"/conditions-utilisation"}
+            href={"/general-terms-and-conditions-of-use"}
             onClick={() => changeIsOpen(false)}
             className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
-            <li className="text-center">
-              Conditions générales <br /> d{"'"}utilisation
-            </li>
+            <li className="text-center">General conditions of use</li>
           </Link>
         </ul>
       </nav>
