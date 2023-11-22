@@ -1,10 +1,10 @@
 import React from "react";
-import Image from "next/image";
+import Link from "next/link";
 export const Footer = () => {
   return (
-    <div className="lg:h-1/4-screen h-auto w-full bg-primary text-primary font-montserrat shadow-xl shadow-black  py-8 lg:py-0">
+    <div className="lg:h-[30vh] h-auto w-full bg-primary text-primary font-montserrat shadow-xl shadow-black  py-8 lg:py-0">
       <div className="max-w-9xl mx-auto h-full w-full flex flex-col items-center justify-around">
-        <div className="flex md:flex-row flex-col h-full w-full items-center justify-around ">
+        <div className="flex md:gap-0 gap-4 md:flex-row flex-col h-full w-full md:items-center justify-around ">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="102"
@@ -21,20 +21,34 @@ export const Footer = () => {
             />
           </svg>
           <div>
-            <ul className="text-lg flex flex-col justify-center items-center lg:items-start gap-4 w-2/3 mx-auto">
-              <li>Home</li>
-              <li>Partenariats</li>
-              <li>Contact</li>
-              <li></li>
+            <ul className="text-lg flex flex-col text-center justify-center items-center lg:items-start gap-4 w-2/3 mx-auto">
+              <Link href="/home">
+                <li>Home</li>
+              </Link>
+              <Link href="/list-of-beacons">
+                <li className="w-[110%] text-start md:text-center md:w-full lg:text-start">
+                  List Of Beacons
+                </li>
+              </Link>
+
+              <Link href="mailto:pro.thomas.alexandre@gmail.com">
+                <li>Contact</li>
+              </Link>
             </ul>
           </div>
           <div>
             <ul className="text-lg flex flex-col justify-center gap-4 items-center lg:items-start w-2/3 mx-auto">
-              <li>rbmp-snir.com</li>
-              <li>Mentions légales</li>
-              <li className="text-center">
-                Conditions générales d{"'"}utilisation
-              </li>
+              <Link href={"https://rbmp-snir.com"}>
+                <li>rbmp-snir.com</li>
+              </Link>
+              <Link href={"/legal-mentions"}>
+                <li>Legal Mentions</li>
+              </Link>
+              <Link href={"/general-terms-and-conditions-of-use"}>
+                <li className="w-[110%] md:text-center lg:text-start">
+                  General conditions of use
+                </li>
+              </Link>
             </ul>
           </div>
         </div>
