@@ -5,7 +5,7 @@ import { QuoteSection } from "@/components/features/QuoteSection";
 import { Analytics } from "@/components/features/Analytics";
 import prisma from "../../../prisma/db/prisma";
 import { TypeBalise, Balise, Club } from "@prisma/client";
-
+ 
 export default async function Home() {
   const typeBeacons: TypeBalise[] = await prisma.typeBalise.findMany({});
   const beacons: Balise[] = await prisma.balise.findMany({
