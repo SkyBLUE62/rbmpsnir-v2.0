@@ -1,5 +1,12 @@
 "use server";
+import { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "rbmp-snir v2.0 | Legal Mentions",
+  description: "Home page of rbmp-snir v2.0",
+};
+
 
 const page = async () => {
   return (

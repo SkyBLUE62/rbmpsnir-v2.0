@@ -3,6 +3,13 @@ import prisma from "../../../prisma/db/prisma";
 import { Balise, Club } from "@prisma/client";
 import Link from "next/link";
 import Image from "next/image";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "rbmp-snir v2.0 | Beacons List",
+  description: "Home page of rbmp-snir v2.0",
+};
+
 const page = async () => {
   let beacons;
 

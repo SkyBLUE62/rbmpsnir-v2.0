@@ -18,6 +18,12 @@ import { HourlyData } from "@/dto/openweather";
 import { DetailsBeaconMap } from "@/components/map/DetailsBeaconMap";
 import { IDToIconOpenWeather } from "@/functions/IDToIconOpenWeather";
 import { MapSkeleton } from "@/components/loading/MapSkeleton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "rbmp-snir v2.0 | Weather Beacons",
+  description: "Home page of rbmp-snir v2.0",
+};
 
 const DailyTempGraph = dynamic(
   () => import("@/components/graph/DailyTempGraph"),

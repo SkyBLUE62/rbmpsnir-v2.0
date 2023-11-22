@@ -5,7 +5,14 @@ import { QuoteSection } from "@/components/features/QuoteSection";
 import { Analytics } from "@/components/features/Analytics";
 import prisma from "../../../prisma/db/prisma";
 import { TypeBalise, Balise, Club } from "@prisma/client";
+import { Metadata } from "next";
  
+export const metadata: Metadata = {
+  title: "rbmp-snir v2.0 | Home",
+  description: "Home page of rbmp-snir v2.0",
+};
+
+
 export default async function Home() {
   const typeBeacons: TypeBalise[] = await prisma.typeBalise.findMany({});
   const beacons: Balise[] = await prisma.balise.findMany({
