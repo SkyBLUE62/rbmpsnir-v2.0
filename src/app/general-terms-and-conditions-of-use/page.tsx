@@ -2,10 +2,6 @@ import { Metadata } from "next";
 import Link from "next/link";
 import React from "react";
 
-export const metadata: Metadata = {
-  title: "rbmp-snir v2.0 | General Terms",
-  description: "Home page of rbmp-snir v2.0",
-};
 
 const page = () => {
   return (
