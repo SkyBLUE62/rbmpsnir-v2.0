@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { faker } from "@faker-js/faker";
+import { randomUUID } from "crypto";
 const prisma = new PrismaClient();
 interface Coordonnees {
   [key: string]: {
@@ -9,7 +10,7 @@ interface Coordonnees {
 }
 
 // async function generateClubs() {
-//   for (let index = 0; index < 10; index++) {
+//   for (let index = 0; index < 3; index++) {
 //     const club = await prisma.club.create({
 //       data: {
 //         name: faker.company.name(),
@@ -23,7 +24,6 @@ interface Coordonnees {
 //   }
 // }
 
-// generateClubs()
 const lieuToSlug = (lieu: string) => {
   return lieu.toLowerCase().replace(/\s+/g, "-");
 };
@@ -122,7 +122,28 @@ async function generateClubsAndBalises() {
     console.log(`Balise created for Club ${randomClub.name}: ${balise.lieu}`);
   }
 }
+
+
+// const generateIdType = async () => {
+//   for (let index = 0; index < 4; index++) {
+//     const type = await prisma.typeBalise.create({
+//       data: {
+//         id: randomUUID(),
+//         name: "LED Professional Weather Station Solar Wireless 7-1 Sensors WIFI 433Mhz LoRa RADDY",
+//         description:
+//           "LED Professional Weather Station Solar Wireless 7-1 Sensors WIFI 433Mhz LoRa RADDY",
+//         slug: "led-professional-weather-station-solar-wireless-7-1-sensors-wifi-433mhz-lora-raddy",
+//         image: "assets/images/balises/balise4.jpg",
+//       },
+//     });
+//     console.log(`Type created: ${type.name}`);
+//   }
+// };
+
+// generateIdType()
+// generateClubs()
 generateClubsAndBalises()
+
   .then(async () => {
     await prisma.$disconnect();
   })
