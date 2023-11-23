@@ -11,8 +11,6 @@ const schema = z.object({
 });
 
 export const addQuoteAction = async (formData: FormData) => {
-  console.log("formData", formData);
-
   try {
     const parsedData = schema.parse({
       club: formData.get("club") as string,
@@ -22,10 +20,7 @@ export const addQuoteAction = async (formData: FormData) => {
       beaconIdType: formData.get("beaconIdType") as string,
     });
 
-    console.log("parsedData", parsedData);
-
-    const { ffvlNumber, email } = parsedData;
-    const beaconIdType = parsedData.beaconIdType;
+    const { ffvlNumber, email, beaconIdType } = parsedData;
 
     const existingClub = await prisma.club.findFirst({
       where: {
@@ -34,24 +29,27 @@ export const addQuoteAction = async (formData: FormData) => {
     });
 
     if (existingClub) {
-      const addQuote = await prisma.quote.create({
+      await prisma.quote.create({
         data: {
           typeId: beaconIdType,
           clubId: existingClub.id,
         },
       });
-      if (addQuote) {
-        return { status: "200", message: "Quote added successfully" };
-      }
+
+      return { status: "200", message: "Quote added successfully" };
     } else {
       return { status: "404", message: "Club Not Found", path: "" };
     }
   } catch (err) {
+    console.error(err);
+
     if (err instanceof z.ZodError) {
       return {
         status: "400",
         issues: err.issues,
       };
+    } else {
+      return { status: "500", message: "Internal Server Error" };
     }
   }
 };

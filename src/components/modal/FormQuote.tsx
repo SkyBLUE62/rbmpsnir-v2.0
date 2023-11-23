@@ -50,12 +50,7 @@ export const FormQuote = ({
         className="w-full h-full mt-14 px-4 py-4 flex flex-col items-center justify-start gap-6"
         action={async (formAction: FormData) => {
           const status: any = await addQuoteAction(formAction);
-          if (
-            status.issues &&
-            (status.status === "404" ||
-              status.status === "500" ||
-              status.status === "400")
-          ) {
+          if (status.issues) {
             for (let index = 0; index < status.issues.length; index++) {
               console.log(status.issues[index]);
               const msg =
@@ -83,6 +78,17 @@ export const FormQuote = ({
               theme: "light",
             });
             closeModal();
+          } else if (status.status === "404" || status.status === "500") {
+            toast.error(status.message, {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
           }
         }}
       >
