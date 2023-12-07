@@ -10,7 +10,7 @@ export const BtnFormQuote = ({ id, setOpenModalId }: Props) => {
   return (
     <>
       <button
-        className="bg-orange-600 font-semibold h-auto w-3/4 py-2 px-2 rounded-2xl flex flex-row items-center justify-center gap-2 hover:transform hover:scale-110"
+        className="bg-orange-600 font-semibold h-auto w-3/4 py-2 px-2 rounded-2xl flex flex-row items-center justify-center gap-2 hover:transform hover:scale-110 xl:text-xs text-sm"
         onClick={() => setOpenModalId(id)}
       >
         Request a quote

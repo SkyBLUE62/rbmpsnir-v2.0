@@ -16,7 +16,7 @@ export const Analytics = ({
     <div className="h-[20vh] w-full bg-primary shadow-2xl px-4 lg:px-0  absolute -skew-y-[3deg] z-50 md:-bottom-[10vh] -bottom-[15vh]">
       <div className="h-full max-w-9xl mx-auto flex flex-row justify-around items-center text-primary font-monument">
         <Reveals>
-          <div className="flex flex-col md:text-lg w-1/3 lg:w-auto gap-2 justify-center items-center lg:text-3xl text-xs">
+          <div className="flex flex-col md:text-lg w-full lg:w-auto gap-2 justify-center items-start sm:items-center lg:text-3xl text-xs">
             Number of beacons
             <CountUp
               delay={2}
@@ -28,7 +28,7 @@ export const Analytics = ({
         </Reveals>
 
         <Reveals>
-          <div className="flex flex-col md:text-lg w-1/3 lg:w-auto gap-4 justify-center items-center lg:text-3xl text-xs">
+          <div className="flex flex-col md:text-lg sm:w-full lg:w-auto gap-4 justify-center items-start sm:items-center lg:text-3xl text-xs">
             Member club
             <CountUp
               delay={2}
@@ -40,7 +40,7 @@ export const Analytics = ({
         </Reveals>
 
         <Reveals>
-          <div className="flex w-1/3 flex-col md:text-lg lg:w-auto gap-4 justify-center items-center lg:text-3xl text-xs">
+          <div className="flex w-full flex-col md:text-lg lg:w-auto gap-4 justify-center items-start sm:items-center lg:text-3xl text-xs">
             Mainland
             <CountUp
               delay={2}
