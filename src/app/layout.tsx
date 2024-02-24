@@ -4,7 +4,7 @@ import { Header } from "@/components/features/layout/Header";
 import { Footer } from "@/components/features/layout/Footer";
 import { Nav } from "@/components/features/layout/Nav";
 import { ToastContainer } from "react-toastify";
-
+import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
   title: "rbmp-snir v2.0",
   description: "rbmp-snir v2.0",
@@ -26,6 +26,7 @@ export default function RootLayout({
           <Header />
           <Nav />
           <ToastContainer />
+          <Analytics />
           {children}
           <Footer />
         </div>
