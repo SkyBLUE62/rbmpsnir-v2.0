@@ -78,7 +78,7 @@ export const Nav = () => {
           <Link
             href={"/list-of-beacons"}
             onClick={() => changeIsOpen(false)}
-            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center text-center xl:text-start"
           >
             <li>List of beacons</li>
           </Link>
@@ -86,7 +86,7 @@ export const Nav = () => {
             href={"https://federation.ffvl.fr/"}
             onClick={() => changeIsOpen(false)}
             target="_blank"
-            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
+            className="relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-secondary after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center text-center xl:text-start"
           >
             <li>Partenariats</li>
           </Link>
