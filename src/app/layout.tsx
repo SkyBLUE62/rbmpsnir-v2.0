@@ -30,7 +30,7 @@ export default function RootLayout({
           <Analytics />
           {children}
           <Footer />
-          <ChangeDomaine />
+          {/* <ChangeDomaine /> */}
         </div>
       </body>
     </html>
